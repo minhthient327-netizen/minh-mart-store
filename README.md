@@ -84,6 +84,14 @@ Bảng chính:
 
 > Nếu muốn khởi tạo lại dữ liệu mẫu, xóa file `store.db` và khởi động lại server.
 
+## GitHub Pages
+
+Trang tĩnh được deploy qua GitHub Pages tại:
+
+- `https://minhthient327-netizen.github.io/minh-mart-store/`
+
+> Chú ý: Phiên bản Pages chạy frontend tĩnh với dữ liệu nội bộ nên một số API backend vẫn là mô phỏng.
+
 ## Lời khuyên mở rộng
 
 - Thêm đăng nhập cho nhân viên.

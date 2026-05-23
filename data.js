@@ -49,6 +49,232 @@ async function fetchJson(url, options) {
   return response.json();
 }
 
+const staticProducts = [
+  {
+    id: "P001",
+    name: "Uniqlo Supima Cotton Crew Neck T-Shirt",
+    price: 299000,
+    stock: 50,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1523381213481-22e39b4e7c07?auto=format&fit=crop&w=400&q=80",
+    description: "Áo thun Uniqlo Supima Cotton mềm mại, thoáng mát cho cả ngày.",
+    lastSold: null,
+  },
+  {
+    id: "P002",
+    name: "GU Oversized Hoodie",
+    price: 399000,
+    stock: 42,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Hoodie GU rộng rãi, phong cách streetwear đơn giản.",
+    lastSold: null,
+  },
+  {
+    id: "P003",
+    name: "Uniqlo Dry Stretch Polo Shirt",
+    price: 259000,
+    stock: 30,
+    importedDate: "2026-05-19",
+    image:
+      "https://images.unsplash.com/photo-1530845641722-a99fbc0f5b26?auto=format&fit=crop&w=400&q=80",
+    description: "Áo polo khô nhanh, phù hợp đi làm hoặc dạo phố.",
+    lastSold: null,
+  },
+  {
+    id: "P004",
+    name: "GU Ribbed Tank Top",
+    price: 149000,
+    stock: 60,
+    importedDate: "2026-05-20",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Áo hai dây GU đơn giản, dễ phối cả mùa hè.",
+    lastSold: null,
+  },
+  {
+    id: "P005",
+    name: "Uniqlo Linen Blend Shirt",
+    price: 499000,
+    stock: 24,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5d1?auto=format&fit=crop&w=400&q=80",
+    description: "Áo sơ mi linen nhẹ nhàng, thoáng khí cho mùa nóng.",
+    lastSold: null,
+  },
+  {
+    id: "P006",
+    name: "GU Flannel Check Shirt",
+    price: 349000,
+    stock: 28,
+    importedDate: "2026-05-19",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Sơ mi flannel GU họa tiết kẻ vintage, ấm áp.",
+    lastSold: null,
+  },
+  {
+    id: "P007",
+    name: "Uniqlo Wide-Fit Jeans",
+    price: 799000,
+    stock: 18,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Quần jeans dáng rộng Uniqlo, phong cách tối giản.",
+    lastSold: null,
+  },
+  {
+    id: "P008",
+    name: "GU Pleated Skirt",
+    price: 349000,
+    stock: 22,
+    importedDate: "2026-05-20",
+    image:
+      "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=400&q=80",
+    description: "Chân váy xếp ly GU dễ phối với mọi kiểu áo.",
+    lastSold: null,
+  },
+  {
+    id: "P009",
+    name: "Uniqlo Ultra Light Down Jacket",
+    price: 1299000,
+    stock: 12,
+    importedDate: "2026-05-17",
+    image:
+      "https://images.unsplash.com/photo-1520975916378-796b999a617d?auto=format&fit=crop&w=400&q=80",
+    description: "Áo khoác lông vũ nhẹ và ấm, dễ dàng gấp gọn.",
+    lastSold: null,
+  },
+  {
+    id: "P010",
+    name: "GU Relaxed Chino Pants",
+    price: 399000,
+    stock: 26,
+    importedDate: "2026-05-19",
+    image:
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80",
+    description: "Quần chino GU trẻ trung, form relaxed dễ mặc.",
+    lastSold: null,
+  },
+  {
+    id: "P011",
+    name: "Uniqlo High-Rise Straight Skirt",
+    price: 499000,
+    stock: 20,
+    importedDate: "2026-05-17",
+    image:
+      "https://images.unsplash.com/photo-1520975916378-796b999a617d?auto=format&fit=crop&w=400&q=80",
+    description: "Chân váy cạp cao Uniqlo phong cách công sở.",
+    lastSold: null,
+  },
+  {
+    id: "P012",
+    name: "GU Knit Cardigan",
+    price: 449000,
+    stock: 18,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Cardigan GU nữ tính, phù hợp layering mùa thu.",
+    lastSold: null,
+  },
+  {
+    id: "P013",
+    name: "Uniqlo Dry-EX Active Shorts",
+    price: 299000,
+    stock: 35,
+    importedDate: "2026-05-20",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Short chạy bộ khô nhanh Uniqlo Dry-EX, thoải mái.",
+    lastSold: null,
+  },
+  {
+    id: "P014",
+    name: "GU Denim Jacket",
+    price: 599000,
+    stock: 16,
+    importedDate: "2026-05-19",
+    image:
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5d1?auto=format&fit=crop&w=400&q=80",
+    description: "Áo khoác denim GU cá tính, dễ phối cùng nhiều trang phục.",
+    lastSold: null,
+  },
+  {
+    id: "P015",
+    name: "Uniqlo Seamless Bra",
+    price: 399000,
+    stock: 20,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Áo lót Seamless Uniqlo ôm nhẹ, không đường may.",
+    lastSold: null,
+  },
+  {
+    id: "P016",
+    name: "GU Fleece Sweatpants",
+    price: 349000,
+    stock: 24,
+    importedDate: "2026-05-17",
+    image:
+      "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=400&q=80",
+    description: "Quần nỉ GU ấm áp, phù hợp ở nhà hoặc dạo phố.",
+    lastSold: null,
+  },
+  {
+    id: "P017",
+    name: "Uniqlo Comfort Jacket",
+    price: 799000,
+    stock: 14,
+    importedDate: "2026-05-18",
+    image:
+      "https://images.unsplash.com/photo-1520975916378-796b999a617d?auto=format&fit=crop&w=400&q=80",
+    description: "Áo khoác nhẹ Uniqlo đa năng, phong cách everyday.",
+    lastSold: null,
+  },
+  {
+    id: "P018",
+    name: "GU Rayon Blouse",
+    price: 329000,
+    stock: 30,
+    importedDate: "2026-05-20",
+    image:
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5d1?auto=format&fit=crop&w=400&q=80",
+    description: "Áo blouse GU mềm mại, phù hợp công sở và dạo phố.",
+    lastSold: null,
+  },
+  {
+    id: "P019",
+    name: "Uniqlo Stretch Jeans",
+    price: 899000,
+    stock: 20,
+    importedDate: "2026-05-19",
+    image:
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    description: "Quần jeans co giãn Uniqlo cho cảm giác thoải mái.",
+    lastSold: null,
+  },
+  {
+    id: "P020",
+    name: "GU Soft Jacket",
+    price: 459000,
+    stock: 26,
+    importedDate: "2026-05-17",
+    image:
+      "https://images.unsplash.com/photo-1523381213481-22e39b4e7c07?auto=format&fit=crop&w=400&q=80",
+    description: "Áo khoác GU mềm mại, thiết kế basic dễ phối.",
+    lastSold: null,
+  },
+];
+
+const staticSales = [];
+const staticImports = [];
+
 function getProductName(productId) {
   const product = products.find((item) => item.id === productId);
   return product ? product.name : productId;
@@ -62,14 +288,20 @@ function getProductBrand(name) {
 }
 
 async function loadData() {
-  const [productData, salesData, importsList] = await Promise.all([
-    fetchJson("/api/products"),
-    fetchJson("/api/sales"),
-    fetchJson("/api/imports"),
-  ]);
-  products = productData;
-  sales = salesData;
-  importsData = importsList;
+  try {
+    const [productData, salesData, importsList] = await Promise.all([
+      fetchJson("/api/products"),
+      fetchJson("/api/sales"),
+      fetchJson("/api/imports"),
+    ]);
+    products = productData;
+    sales = salesData;
+    importsData = importsList;
+  } catch (error) {
+    products = staticProducts;
+    sales = staticSales;
+    importsData = staticImports;
+  }
 }
 
 function changeMode(toAdmin) {
@@ -196,6 +428,34 @@ async function checkout() {
       "Thanh toán thành công! Đã cập nhật tồn kho và ghi lịch sử bán hàng.",
     );
   } catch (error) {
+    if (
+      error.message.includes("Failed to fetch") ||
+      error.message.includes("404") ||
+      error.message.includes("NetworkError")
+    ) {
+      const now = new Date().toISOString().slice(0, 10);
+      items.forEach((item) => {
+        const product = products.find((p) => p.id === item.productId);
+        if (product) {
+          product.stock = Math.max(0, product.stock - item.qty);
+          product.lastSold = now;
+          sales.unshift({
+            id: `SIM-${Date.now()}-${item.productId}`,
+            productId: item.productId,
+            qty: item.qty,
+            total: item.qty * item.price,
+            date: now,
+          });
+        }
+      });
+      cart = {};
+      saveCart();
+      renderAll();
+      alert(
+        "Thanh toán giả lập thành công. Dữ liệu được cập nhật tạm thời trên trình duyệt.",
+      );
+      return;
+    }
     alert(`Lỗi thanh toán: ${error.message}`);
   } finally {
     elements.checkoutBtn.disabled = false;
