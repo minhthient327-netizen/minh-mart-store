@@ -1,0 +1,3 @@
+node_modules;
+store.db;
+npm - debug.log.DS_Store;

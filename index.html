@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Bán Hàng Online</title>
+    <link rel="stylesheet" href="data.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">Cửa Hàng Minh Mart</div>
+      <nav class="top-nav">
+        <button id="customerModeBtn" class="mode-btn active">Khách hàng</button>
+        <button id="adminModeBtn" class="mode-btn">Nhân viên</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="customerSection" class="panel active-panel">
+        <h1>Mua hàng online</h1>
+        <div class="customer-grid">
+          <div class="product-list card">
+            <h2>Sản phẩm</h2>
+            <div id="productCards" class="cards"></div>
+          </div>
+          <div class="cart-preview card">
+            <h2>Giỏ hàng</h2>
+            <div id="cartItems"></div>
+            <div class="cart-summary">
+              <div>Tổng tiền: <span id="cartTotal">0</span> đ</div>
+              <button id="checkoutBtn" class="btn primary">Thanh toán</button>
+            </div>
+            <div class="checkout-note">
+              Sau khi thanh toán, hệ thống lưu lịch sử bán và tự động giảm tồn
+              kho.
+            </div>
+          </div>
+        </div>
+
+        <div class="report-section card">
+          <h2>Thông tin đơn hàng</h2>
+          <div id="purchaseHistory"></div>
+        </div>
+      </section>
+
+      <section id="adminSection" class="panel">
+        <h1>Quản lý nhân viên</h1>
+        <div class="admin-grid">
+          <div class="card admin-card">
+            <h2>Nhập tồn</h2>
+            <form id="importForm" class="form-grid">
+              <label
+                >Sản phẩm
+                <select id="importProduct"></select>
+              </label>
+              <label
+                >Số lượng nhập
+                <input id="importQty" type="number" min="1" value="1" />
+              </label>
+              <label
+                >Ngày nhập
+                <input id="importDate" type="date" />
+              </label>
+              <button type="submit" class="btn secondary">
+                Ghi nhận nhập hàng
+              </button>
+            </form>
+          </div>
+
+          <div class="card admin-card">
+            <h2>Tìm báo cáo theo ngày</h2>
+            <div class="form-grid">
+              <label
+                >Chọn ngày
+                <input id="reportDate" type="date" />
+              </label>
+              <button id="loadReportBtn" class="btn secondary">
+                Xem báo cáo
+              </button>
+            </div>
+            <div id="dailySummary" class="summary-box"></div>
+          </div>
+        </div>
+
+        <div class="card table-card">
+          <h2>Quản lý tồn kho</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Tồn kho</th>
+                <th>Ngày nhập</th>
+                <th>Ngày bán gần nhất</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTable"></tbody>
+          </table>
+        </div>
+
+        <div class="card table-card">
+          <h2>Lịch sử nhập hàng</h2>
+          <div id="importLog"></div>
+        </div>
+
+        <div class="card table-card">
+          <h2>Lịch sử bán hàng</h2>
+          <div id="salesLog"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Minh Mart - Demo quản lý bán hàng trực tuyến</p>
+    </footer>
+
+    <script src="data.js"></script>
+  </body>
+</html>
